@@ -2,6 +2,8 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
+import { Card } from "react-bootstrap";
+import Character from "./Character";
 
 function Characters() {
   //state variables on top
@@ -11,8 +13,9 @@ function Characters() {
   const getCharacters = () => {
     fetch("https://rickandmortyapi.com/api/character")
       .then((response) => {
-        if (!response.ok) { // trasform it into a JSON only if if the response is ok, otherwise stop there
-          setError(true)
+        if (!response.ok) {
+          // trasform it into a JSON only if if the response is ok, otherwise stop there
+          setError(true);
         }
         return response.json();
       })
@@ -23,14 +26,14 @@ function Characters() {
           setError(true);
         }
         setCharacters(result.results); // whenever we use the setter there's another run of the component
-      }).catch((error) => {
-        console.log(error);
-        setError(true)
       })
+      .catch((error) => {
+        console.log(error);
+        setError(true);
+      });
   };
 
   useEffect(() => {
-    
     getCharacters();
   }, []);
 
@@ -38,10 +41,17 @@ function Characters() {
   return (
     <div>
       <h1>Rick & Morty App</h1>
-     
-      {characters &&
+
+      {/* {characters &&
         characters.map((character) => {
           return <p key={character.id}>{character.name}</p>;
+        })} */}
+
+      {characters &&
+        characters.map((character) => {
+          return (
+            <Character character={character} key={character.id} />
+          );
         })}
 
       {error && <h2>Something went wrong</h2>}
