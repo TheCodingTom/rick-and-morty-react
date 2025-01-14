@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
-import { Card } from "react-bootstrap";
+import { Card, Col, Row } from "react-bootstrap";
 import Character from "./Character";
 
 function Characters() {
@@ -42,17 +42,16 @@ function Characters() {
     <div>
       <h1>Rick & Morty App</h1>
 
-      {/* {characters &&
-        characters.map((character) => {
-          return <p key={character.id}>{character.name}</p>;
-        })} */}
-
-      {characters &&
-        characters.map((character) => {
-          return (
-            <Character character={character} key={character.id} />
-          );
-        })}
+      <Row>
+        {characters &&
+          characters.map((character) => {
+            return (
+              <Col key={character.id} xl={3} lg={4} md={"auto"} sm={"auto"} className="mb-5">
+                <Character character={character}  />
+              </Col>
+            );
+          })}
+      </Row>
 
       {error && <h2>Something went wrong</h2>}
     </div>
