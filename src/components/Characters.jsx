@@ -40,7 +40,7 @@ function Characters() {
   // useEffect hook close to the return
   return (
     <div>
-      <h1>Rick & Morty App</h1>
+      <h1>Wubba Lubba Dub Dub!</h1>
 
       <div className="container">
         {characters &&

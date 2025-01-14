@@ -91,15 +91,28 @@
 
 /* Style the back side */
 .flip-card-back {
-  background-color: dodgerblue;
+  background-color: #97ce4c;
   color: white;
   transform: rotateY(180deg);
   border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
-.cardImage {
+.card-image {
   height: 100%;
   width: 100%;
   object-fit: contain;
   border-radius: 50%;
 }
+
+/* .card-title {
+  color: white;
+  font-size: medium;
+
+  margin: auto;
+  text-align: center;
+  vertical-align: middle;
+  
+} */

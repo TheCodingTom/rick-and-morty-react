@@ -13,10 +13,11 @@ function Character(props) {
       <div className="flip-card">
         <div className="flip-card-inner">
           <div className="flip-card-front">
-            <img src={props.character.image} alt="image of a Rick & Morty character" className="cardImage"/>
+            <img src={props.character.image} alt="image of a Rick & Morty character" className="card-image"/>
           </div>
           <div className="flip-card-back">
-            <h1>{props.character.name}</h1>
+            <h3 className="card-title">{props.character.name}</h3>
+            
           </div>
         </div>
       </div>
