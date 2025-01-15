@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
+import ModalCharacter from "./ModalCharacter";
 
 function Character(props) {
   // information arriving to children from parent component via props
 
-  const [show, setShow] = useState(false);
+  // const [show, setShow] = useState(false);
 
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
 
   // console.log(props.character);
   return (
@@ -23,7 +24,8 @@ function Character(props) {
           </div>
           <div className="flip-card-back">
             <h3 className="card-title">{props.character.name}</h3>
-            <Button
+            <ModalCharacter character={props.character} key={props.character.id}/>
+            {/* <Button
               variant="success"
               style={{ width: "70%" }}
               onClick={handleShow}
@@ -33,18 +35,20 @@ function Character(props) {
 
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                <Modal.Title>Modal heading</Modal.Title>
+                <Modal.Title>{props.character.name}</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                Woohoo, you are reading this text in a modal!
+                <img
+                  src={props.character.image}
+                  alt="image of a Rick & Morty character"
+                />
               </Modal.Body>
               <Modal.Footer>
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-               
               </Modal.Footer>
-            </Modal>
+            </Modal> */}
           </div>
         </div>
       </div>
