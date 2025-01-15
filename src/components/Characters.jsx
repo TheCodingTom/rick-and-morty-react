@@ -2,14 +2,14 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
-import { Card, Col, Form, InputGroup, Row } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import Character from "./Character";
 
 function Characters() {
-  //state variables on top
-  const [characters, setCharacters] = useState(false); // false at the beginning because we don't have any value yet
+  // state variables on top of the code
+  const [characters, setCharacters] = useState([]); // empty at the beginning because we don't have any value yet
+  const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
-  const [inputText, setInputText] = useState("");
 
   const getCharacters = () => {
     fetch("https://rickandmortyapi.com/api/character")
@@ -34,30 +34,19 @@ function Characters() {
       });
   };
 
+    const filtered = characters.filter((character) => {
+      return character.name.toLowerCase().includes(query);
+
+    });
+    
   useEffect(() => {
     getCharacters();
   }, []);
 
- 
-
-  const handleSearchBar = (event) => {
-    // console.log("yes");
-    console.log(event.target.value);
-    setInputText(event.target.value);
-
-    const searchedCharacters = characters.filter((character) => {
-      const lowerCaseName = character.name.toLowerCase()
-      const lowerCaseInput = inputText.toLowerCase()
-      return lowerCaseName.includes(lowerCaseInput)
-    })
-    
-
-  };
-
   // useEffect hook close to the return
   return (
     <div>
-      <InputGroup onChange={handleSearchBar} className="mb-3">
+      <InputGroup value={query} onChange={e => setQuery(e.target.value)} className="mb-3">
         <Form.Control
           placeholder="Search"
           aria-label="Search"
@@ -69,7 +58,7 @@ function Characters() {
 
       <div className="container">
         {characters &&
-          characters.map((character) => {
+          filtered.map((character) => {
             return <Character character={character} key={character.id} />;
           })}
 
