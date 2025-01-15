@@ -35,7 +35,7 @@ function Characters() {
   };
 
     const filtered = characters.filter((character) => {
-      return character.name.toLowerCase().includes(query);
+      return character.name.toLowerCase().includes(query.toLowerCase());
 
     });
     
