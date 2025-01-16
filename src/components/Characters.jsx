@@ -1,9 +1,10 @@
-// import React from "react";
-
 import { useEffect } from "react";
 import { useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import Character from "./Character";
+
+
+import logo from './logo.png'
 
 function Characters() {
   // state variables on top of the code
@@ -40,7 +41,8 @@ function Characters() {
   });
 
   const handleClickNext = () => {
-    if (pageNumber < 42) { // not the best way of doing it
+    if (pageNumber < 42) {
+      // not the best way of doing it
       setPageNumber(pageNumber + 1);
     }
   };
@@ -50,6 +52,8 @@ function Characters() {
       setPageNumber(pageNumber - 1);
     }
   };
+console.log(logo);
+
 
   useEffect(() => {
     getCharacters();
@@ -74,7 +78,12 @@ function Characters() {
         </div>
       </div>
 
-      <h1>Wubba Lubba Dub Dub!</h1>
+   
+        <div className="title-container">
+        <h1>Wubba Lubba Dub Dub!</h1>
+        <img className="logo" src={logo} alt="" />
+        </div>
+       
 
       <div className="container">
         {characters &&
@@ -86,8 +95,8 @@ function Characters() {
       </div>
 
       <div className="bottom-container">
-        <button onClick={handleClickPrev}>Prev</button>
-        <button onClick={handleClickNext}>Next</button>
+        <button className="pag-button" onClick={handleClickPrev}>Prev</button>
+        <button className="pag-button" onClick={handleClickNext}>Next</button>
       </div>
     </div>
   );

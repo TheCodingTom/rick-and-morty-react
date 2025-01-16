@@ -15,7 +15,7 @@
 .logo.react:hover {
   filter: drop-shadow(0 0 2em #61dafbaa);
 }
-
+*/
 @keyframes logo-spin {
   from {
     transform: rotate(0deg);
@@ -23,7 +23,7 @@
   to {
     transform: rotate(360deg);
   }
-} */
+} 
 
 /* The flip card container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
 .flip-card {
@@ -78,11 +78,16 @@
   border-radius: 50%;
 }
 
+h1 {
+  color: #2eb127;
+  margin-top: 15px;
+}
+
 .container {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  gap: 10px;
+  gap: 15px;
   justify-content: center;
 }
 
@@ -111,8 +116,53 @@
 }
 
 .bottom-container {
-  margin-top: 20px;
+  margin-top: 30px;
+  margin-bottom: 20px;
   display: flex;
   flex-direction: row;
   justify-content: space-around;
 }
+
+.pag-button {
+  background-color: white;
+  border-radius: 50%;
+  border: solid 2px #97ce4c;
+  color: #97ce4c;
+  display: inline-block;
+  font-size: 16px;
+  padding: 10px 25px;
+  text-align: center;
+  transition-duration: 0.4s;
+}
+
+.pag-button:hover {
+  background-color:#97ce4c;
+  color: white;
+}
+
+.title-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.logo {
+  height: 200px;
+  width: 200px;
+  
+}
+
+.logo:hover {
+  animation: myAnimation;
+}
+
+@keyframes myAnimation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+} 
