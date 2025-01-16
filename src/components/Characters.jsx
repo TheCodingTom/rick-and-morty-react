@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
-import { Form, InputGroup } from "react-bootstrap";
+import { Form, InputGroup, Pagination } from "react-bootstrap";
 import Character from "./Character";
 
 function Characters() {
@@ -10,9 +10,10 @@ function Characters() {
   const [characters, setCharacters] = useState([]); // empty at the beginning because we don't have any value yet
   const [query, setQuery] = useState("");
   const [error, setError] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
 
   const getCharacters = () => {
-    fetch("https://rickandmortyapi.com/api/character")
+    fetch(`https://rickandmortyapi.com/api/character/?page=${pageNumber}`)
       .then((response) => {
         if (!response.ok) {
           // trasform it into a JSON only if if the response is ok, otherwise stop there
@@ -34,19 +35,26 @@ function Characters() {
       });
   };
 
-    const filtered = characters.filter((character) => {
-      return character.name.toLowerCase().includes(query.toLowerCase());
+  const filtered = characters.filter((character) => {
+    return character.name.toLowerCase().includes(query.toLowerCase());
+  });
 
-    });
-    
+  // const handleSecondCall = () => {
+  //   setPageNumber(pageNumber + 1);
+  // };
+
   useEffect(() => {
     getCharacters();
-  }, []);
+  }, [characters]);
 
   // useEffect hook close to the return
   return (
     <div>
-      <InputGroup value={query} onChange={e => setQuery(e.target.value)} className="mb-3">
+      <InputGroup
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+        className="mb-3"
+      >
         <Form.Control
           placeholder="Search"
           aria-label="Search"
@@ -63,6 +71,17 @@ function Characters() {
           })}
 
         {error && <h2>Something went wrong</h2>}
+      </div>
+
+      <div className="bottom-container">
+        <Pagination>
+          <Pagination.Prev />
+          <Pagination.Next
+            onClick={(e) => {
+              setPageNumber(pageNumber + 1);
+            }}
+          />
+        </Pagination>
       </div>
     </div>
   );
