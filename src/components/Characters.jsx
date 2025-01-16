@@ -2,8 +2,6 @@ import { useEffect } from "react";
 import { useState } from "react";
 import { Form, InputGroup } from "react-bootstrap";
 import Character from "./Character";
-
-
 import logo from './logo.png'
 
 function Characters() {
@@ -52,7 +50,7 @@ function Characters() {
       setPageNumber(pageNumber - 1);
     }
   };
-console.log(logo);
+
 
 
   useEffect(() => {

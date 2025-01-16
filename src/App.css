@@ -30,7 +30,7 @@
   background-color: transparent;
   width: 200px;
   height: 200px;
-  border: 2px solid black;
+  border: 2px solid #2eb127;
   perspective: 1000px; /* 3D flipping effect */
   border-radius: 50%;
 }
@@ -61,14 +61,16 @@
 
 /* Style the back side */
 .flip-card-back {
+  align-items: center;
   background-color: #97ce4c;
-  color: white;
-  transform: rotateY(180deg);
   border-radius: 50%;
   display: flex;
   flex-direction: column;
+  gap: 15px;
   justify-content: center;
-  align-items: center;
+  color: white;
+  transform: rotateY(180deg);
+
 }
 
 .card-image {
@@ -78,10 +80,20 @@
   border-radius: 50%;
 }
 
+.card-title {
+  font-size:20px
+}
+
+.card-button {
+  padding: 5px 15px;
+}
+
 h1 {
   color: #2eb127;
   margin-top: 15px;
 }
+
+
 
 .container {
   display: flex;
@@ -110,9 +122,28 @@ h1 {
  
 }
 
-.my-modal {
-  text-align: center;
-  margin: auto;
+
+
+.modal-div {
+  outline: 2px solid #2eb127 ;
+  border-radius: 2%;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  align-items: center;
+  gap: 10px;
+  color: #2eb127;
+
+}
+
+.modal-pic {
+  border-radius: 10%;
+}
+
+.modal-body {
+  display: flex;
+  flex-direction: column;
+ 
 }
 
 .bottom-container {
@@ -151,12 +182,14 @@ h1 {
 .logo {
   height: 200px;
   width: 200px;
+
   
 }
 
 .logo:hover {
-  animation: myAnimation;
+  transform: rotate(360deg); transition: 1.5s
 }
+  /* 
 
 @keyframes myAnimation {
   from {
@@ -165,4 +198,4 @@ h1 {
   to {
     transform: rotate(360deg);
   }
-} 
+}  */

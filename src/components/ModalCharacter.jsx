@@ -9,31 +9,30 @@ function ModalCharacter(props) {
 
   return (
     <div>
-      <Button variant="success" onClick={handleShow}>
+      <Button className="card-button" variant="success" onClick={handleShow}>
         Read more
       </Button>
 
       <Modal show={show} onHide={handleClose}>
-        <Modal.Header>
-          <Modal.Title className="my-modal">{props.character.name}</Modal.Title>
-        </Modal.Header>
-        <Modal.Body className="my-modal">
+        <div className="modal-div">
+          <h4>{props.character.name}</h4>
+
           <img
+            className="modal-pic"
             src={props.character.image}
             alt="image of a Rick & Morty character"
           />
           <p>Status: {props.character.status}</p>
           <p>Last location: {props.character.location.name}</p>
-        </Modal.Body>
-        <Modal.Footer>
+
           <Button
-            className="my-modal"
-            variant="secondary"
+            className="card-button"
+            variant="success"
             onClick={handleClose}
           >
             Close
           </Button>
-        </Modal.Footer>
+        </div>
       </Modal>
     </div>
   );

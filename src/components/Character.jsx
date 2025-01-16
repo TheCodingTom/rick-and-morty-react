@@ -17,7 +17,7 @@ function Character(props) {
             />
           </div>
           <div className="flip-card-back">
-            <h3 className="card-title">{props.character.name}</h3>
+            <p className="card-title">{props.character.name}</p>
             <ModalCharacter character={props.character} key={props.character.id}/>
             
           </div>
