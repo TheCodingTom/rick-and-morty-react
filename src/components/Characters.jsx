@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import { useState } from "react";
-import { Form, InputGroup, Pagination } from "react-bootstrap";
+import { Form, InputGroup } from "react-bootstrap";
 import Character from "./Character";
 
 function Characters() {
@@ -40,14 +40,15 @@ function Characters() {
   });
 
   const handleClickNext = () => {
-    setPageNumber(pageNumber + 1);
+    if (pageNumber < 42) { // not the best way of doing it
+      setPageNumber(pageNumber + 1);
+    }
   };
 
   const handleClickPrev = () => {
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
     }
-    
   };
 
   useEffect(() => {
@@ -57,17 +58,21 @@ function Characters() {
   // useEffect hook close to the return
   return (
     <div>
-      <InputGroup
-        value={query}
-        onChange={(e) => setQuery(e.target.value)}
-        className="mb-3"
-      >
-        <Form.Control
-          placeholder="Search"
-          aria-label="Search"
-          aria-describedby="basic-addon1"
-        />
-      </InputGroup>
+      <div className="top-banner">
+        <div className="search-container">
+          <InputGroup
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            className="mb-3 search-bar"
+          >
+            <Form.Control
+              placeholder="Search"
+              aria-label="Search"
+              aria-describedby="basic-addon1"
+            />
+          </InputGroup>
+        </div>
+      </div>
 
       <h1>Wubba Lubba Dub Dub!</h1>
 
@@ -81,13 +86,8 @@ function Characters() {
       </div>
 
       <div className="bottom-container">
-        <Pagination>
-          <Pagination.Prev onClick={handleClickPrev} />
-          <Pagination.Next
-            onClick={handleClickNext}
-          />
-        </Pagination>
-
+        <button onClick={handleClickPrev}>Prev</button>
+        <button onClick={handleClickNext}>Next</button>
       </div>
     </div>
   );
