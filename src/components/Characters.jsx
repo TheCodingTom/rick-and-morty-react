@@ -35,7 +35,7 @@ function Characters() {
       });
   };
 
-  const filtered = characters.filter((character) => {
+  const filteredCharacters = characters.filter((character) => {
     return character.name.toLowerCase().includes(query.toLowerCase());
   });
 
@@ -52,7 +52,7 @@ function Characters() {
 
   useEffect(() => {
     getCharacters();
-  }, [characters]);
+  }, [pageNumber]);
 
   // useEffect hook close to the return
   return (
@@ -73,7 +73,7 @@ function Characters() {
 
       <div className="container">
         {characters &&
-          filtered.map((character) => {
+          filteredCharacters.map((character) => {
             return <Character character={character} key={character.id} />;
           })}
 
@@ -82,11 +82,12 @@ function Characters() {
 
       <div className="bottom-container">
         <Pagination>
-          <Pagination.Prev onClick={handleClickPrev}/>
+          <Pagination.Prev onClick={handleClickPrev} />
           <Pagination.Next
             onClick={handleClickNext}
           />
         </Pagination>
+
       </div>
     </div>
   );
