@@ -39,9 +39,16 @@ function Characters() {
     return character.name.toLowerCase().includes(query.toLowerCase());
   });
 
-  // const handleSecondCall = () => {
-  //   setPageNumber(pageNumber + 1);
-  // };
+  const handleClickNext = () => {
+    setPageNumber(pageNumber + 1);
+  };
+
+  const handleClickPrev = () => {
+    if (pageNumber > 1) {
+      setPageNumber(pageNumber - 1);
+    }
+    
+  };
 
   useEffect(() => {
     getCharacters();
@@ -75,11 +82,9 @@ function Characters() {
 
       <div className="bottom-container">
         <Pagination>
-          <Pagination.Prev />
+          <Pagination.Prev onClick={handleClickPrev}/>
           <Pagination.Next
-            onClick={(e) => {
-              setPageNumber(pageNumber + 1);
-            }}
+            onClick={handleClickNext}
           />
         </Pagination>
       </div>
