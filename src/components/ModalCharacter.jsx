@@ -22,6 +22,7 @@ function ModalCharacter(props) {
             src={props.character.image}
             alt="image of a Rick & Morty character"
           />
+          <p>Species: {props.character.species}</p>
           <p>Status: {props.character.status}</p>
           <p>Last location: {props.character.location.name}</p>
 
